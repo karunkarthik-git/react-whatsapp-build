@@ -29,6 +29,7 @@ function Login() {
         </div>
         <Button onClick={signIn}>Sign In with Google</Button>
       </div>
+      <small>© Karun Karthik 2020 💻</small>
     </div>
   );
 }
