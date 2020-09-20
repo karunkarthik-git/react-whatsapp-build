@@ -4,9 +4,12 @@ import { Button } from "@material-ui/core";
 import { auth, provider } from "./firebase";
 import { useStateValue } from "./StateProvider";
 import { actionTypes } from "./reducer";
+import { useHistory } from "react-router-dom";
 function Login() {
+  const history = useHistory();
   const [{}, dispatch] = useStateValue();
-  const signIn = () => {
+  const signIn = (e) => {
+    e.preventDefault();
     auth
       .signInWithPopup(provider)
       .then((result) => {
@@ -14,6 +17,7 @@ function Login() {
           type: actionTypes.SET_USER,
           user: result.user,
         });
+        history.push("/");
       })
       .catch((error) => alert(error.message));
   };
